@@ -50,15 +50,19 @@
             { left: 900, top: 175 }
         ];
         
+        var dx = 10;
+        var dy = 10;
+        var missile_dy = 10;
+        var enemies_dy = 4;
 
         document.onkeydown = function(e) {
             if (e.keyCode === 37) {
                 // Left
-                hero.left = hero.left - 10;
+                hero.left = hero.left - dx;
             }
             if (e.keyCode === 39) {
                 // Right
-                hero.left = hero.left + 10;
+                hero.left = hero.left + dx;
             }
             if (e.keyCode === 32) {
                 // Spacebar (fire)
@@ -86,7 +90,7 @@
 
         function moveMissiles() {
             for(var i = 0 ; i < missiles.length ; i++ ) {
-                missiles[i].top = missiles[i].top - 8
+                missiles[i].top = missiles[i].top - missile_dy
             }
         }
 
@@ -99,7 +103,7 @@
 
         function moveEnemies() {
             for(var i = 0 ; i < enemies.length ; i++ ) {
-                enemies[i].top = enemies[i].top + 1;
+                enemies[i].top = enemies[i].top + enemies_dy;
             }
         }
 
@@ -120,7 +124,7 @@
         }
 
         function gameLoop() {
-            setTimeout(gameLoop, 1000)
+            setTimeout(gameLoop, 116)
             moveMissiles();
             drawMissiles();
             moveEnemies();
